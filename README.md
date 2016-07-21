@@ -1,2 +1,0 @@
-# FO
-Front Office Repository
