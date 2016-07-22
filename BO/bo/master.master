@@ -1,0 +1,502 @@
+<%@ Master Language="VB" AutoEventWireup="false" CodeFile="master.master.vb" Inherits="_master" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- InstanceBegin template="/Templates/client-01.dwt" codeOutsideHTMLIsLocked="false" -->
+<head runat="server">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Medical Transcriptions</title>
+    <!-- InstanceEndEditable -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../style/BOStyle.css" type="text/css" />
+    <link rel="stylesheet" href="../style/menu.css" type="text/css" />
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+
+    <script language="javascript" type="text/javascript" src="js/jquery1.9.1.js"></script>
+	<script language="javascript" type="text/javascript">
+	    $(document).ready(function() {
+	        /* for keeping track of what's "open" */
+	        var activeClass = 'dropdown-active';
+
+	        /* recurse through dropdown menus */
+	        $('.menu').each(function() {
+	            /* track elements: menu, parent */
+	            var activeClass = "dropdown-active";
+	            var $menu = $(this);
+
+	            var dropdowns = $('.dropdownShow', $menu);
+	            var allWraps = $('.dropdownWrap', $menu);
+
+	            /* hide all menus, scoped */
+	            function hideAll() {
+	                dropdowns.removeClass(activeClass);
+	                allWraps.hide();
+	            }
+
+	            dropdowns.each(function() {
+	                var dropdown = $(this);
+	                var parent = dropdown.parent();
+	                var wraps = $('.dropdownWrap', parent);
+
+	                /* function to show menu when clicked */
+	                dropdown.click(function(e) {
+	                    if (dropdown.hasClass(activeClass)) {
+	                        dropdown.removeClass(activeClass);
+	                        wraps.hide();
+	                    }
+	                    else {
+	                        hideAll();
+	                        dropdown.addClass(activeClass);
+	                        wraps.show();
+	                    }
+
+	                    e.stopPropagation();
+	                });
+	            });
+
+	            $(document).click(hideAll);
+	        });
+	    });
+
+	</script>
+
+    <script language="javascript" type="text/javascript">
+    
+    function confirmDelete(){
+      if(confirm("Are you sure you want to DELETE selected dictations?")==true)
+        return true;
+       else
+        return false;
+    }
+    
+    function confirmReupload() {
+    if(confirm("Are you sure you want to REUPLOAD selected dictations?")==true)
+        return true;
+       else
+        return false;
+    }
+
+    function confirmReset() {
+        if (confirm("Are you sure you want to RESET selected dictations?") == true)
+            return true;
+        else
+            return false;
+    }
+
+    function confirmRestore() {
+        if (confirm("Are you sure you want to RESTORE selected dictations?") == true)
+            return true;
+        else
+            return false;
+    }
+
+    function confirmPurge() {
+        if (confirm("Are you sure you want to permanently PURGE selected dictations? ") == true)
+            return true;
+        else
+            return false;
+    }
+    
+    function CheckBoxConvention(){
+   
+   var values="";
+   for(count=0;count<document.aspnetForm.elements.length;count++)
+   if (document.aspnetForm.elements[count].type=='checkbox')
+   if (document.aspnetForm.elements[count].checked)
+   {
+   if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$cbxFoID') 
+   {
+   values+='1111';
+   }
+   
+   if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$CbxDrId') 
+   {
+   values+='3333';
+   }
+   if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$CbxAdNAme') 
+   {
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxfoId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxdrId').checked) 
+   {
+   values+='_12345678'
+   }
+   else
+   {
+   values='12345678'
+   }
+//   values='ml'
+   }
+if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$cbxPLastName') 
+   {
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxfoId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxdrId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxAdName').checked ) 
+   {
+   values+='_LastName'
+   }
+   else
+   {
+   values='LastName'
+   }
+//   values='ml'
+   }
+   if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$cbxPFirstName') 
+   {
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxPLastName').checked) 
+   {
+   values+='-FirstName'
+   }
+   else
+   {
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxfoId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxdrId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxAdName').checked)
+   {
+   values+='_FirstName'
+   }
+   else{
+   
+   values='FirstName'
+   }
+   }
+//   values='ml'
+   }
+   
+    if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$cbxDate') 
+   {
+   
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxfoId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxdrId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxAdName').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxPLastName').checked || document.getElementById('ctl00$ContentPlaceHolder1$cbxPFirstName').checked ) 
+   {
+   values+='_MMDDYY'
+   }
+   else
+   {
+   values='MMDDYY'
+   }
+//   values='ml'
+   }
+  
+   if (document.aspnetForm.elements[count].name=='ctl00$ContentPlaceHolder1$cbxTimeStamp') 
+   {
+   
+    if(document.getElementById('ctl00$ContentPlaceHolder1$cbxDate').checked) 
+   {
+   values+='-MMSS'
+   }
+   else
+   {
+   if(document.getElementById('ctl00$ContentPlaceHolder1$CbxfoId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxdrId').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxAdName').checked || document.getElementById('ctl00$ContentPlaceHolder1$CbxPLastName').checked || document.getElementById('ctl00$ContentPlaceHolder1$cbxPFirstName').checked ) 
+   {
+   values+='_MMSS'
+   }
+   else{
+   
+   values='MMSS'
+   }
+   }
+//   values='ml'
+   }
+       
+      }
+//      if(document.getElementById("ct100_ContentPlaceHolder1_txtTrans").value != " ")
+//      {
+//      values+= .doc
+//      }
+      document.getElementById("ctl00_ContentPlaceHolder1_txtTrans").value=values
+      
+      
+//      document.aspnetForm.txtDis.value=values
+       return true;  
+    }
+    
+    function AssignSessionValues(){
+         var  cmdMT=document.getElementById("ctl00_ContentPlaceHolder1_cmbMT").value;
+         var  cmdQC=document.getElementById("ctl00_ContentPlaceHolder1_cmbQC").value;
+         var  cmdPR=document.getElementById("ctl00_ContentPlaceHolder1_cmbPR").value;
+         var  cmdFR=document.getElementById("ctl00_ContentPlaceHolder1_cmbFR").value;
+         if(cmdMT==""){
+            alert("Please Select MT");
+            return false;
+         }
+             
+         var Value=dictationassignment.AssignRights(cmdMT,cmdQC,cmdPR,cmdFR);
+        // alert("Return Value :"+ Value);
+        return Value.value;
+    }
+    
+     function confirmDeleteTeam(){
+           if(confirm("Are you sure you want to delete?")==true)
+        return true;
+       else
+        return false;
+    }
+    
+    function confirmEnableDisable(){
+      if(confirm("Are you sure you want to enable or disable?")==true)
+        return true;
+       else
+        return false;
+    }
+
+function confirmUnassignment(){
+      if(confirm("Are you sure you want to unassigned?")==true)
+        return true;
+       else
+        return false;
+    }
+
+
+function ChangeCheckBoxState(id, checkState)
+        {
+            var cb = document.getElementById(id);
+            if (cb != null)
+               cb.checked = checkState;
+        }
+        
+        
+        function ChangeAllCheckBoxStates(checkState)
+        {
+            // Toggles through all of the checkboxes defined in the CheckBoxIDs array
+            // and updates their value to the checkState input parameter
+            if (CheckBoxIDs != null)
+            {
+                for (var i = 0; i < CheckBoxIDs.length; i++)
+           
+                   ChangeCheckBoxState(CheckBoxIDs[i], checkState);
+            }
+        }
+        
+        function checkMt_1(check,id)
+        {
+       for (i=0; i<document.aspnetForm.elements.AssChkMT.length; i++){
+       if(document.aspnetForm.elements.AssChkMT(i).name==id)
+       document.aspnetForm.elements.AssChkMT(i).checked=check
+       }
+       }
+       function check(check,p_name)
+       {
+       //alert(p_name);
+       var count;
+       var Elength=document.aspnetForm.elements.length;
+       var p_id =p_name.substring(p_name.length-2);
+       p_name = p_name.substring(0,p_name.length-12);
+       for(count=0;count<Elength;count++)
+        if (document.aspnetForm.elements[count].type=='checkbox')
+        if (document.aspnetForm.elements[count].name.substring(document.aspnetForm.elements[count].name.length-2)==p_id)
+         if (document.aspnetForm.elements[count].name.substring(0,document.aspnetForm.elements[count].name.length-12)==p_name)
+         {
+         //alert(p_name.substring(0,p_name.length-12));
+        // alert(document.aspnetForm.elements[count].name.substring(0,document.aspnetForm.elements[count].name.length-12));
+         //alert(check);
+         document.aspnetForm.elements[count].checked=check;
+         }
+         //document.aspnetForm.elements[count].checked==check  
+       }
+       
+        function CheckAllCheckboxes(p_name,i_check)
+        {       
+            var count=2;
+            var i_condition;
+            
+
+            left = p_name.substring(0,p_name.length-8);
+            right = p_name.substring(p_name.length-6);
+            i_condition = left+'0'+count+right;
+
+            while(document.aspnetForm.elements[i_condition]!=null)
+            {          
+                document.aspnetForm.elements[i_condition].checked=i_check;                         
+                count++;         
+             
+                if (count<=9) 
+                    i_condition = left+'0'+count+right;
+                else
+                    i_condition = left+count+right;
+            }
+       }  
+       
+        function ChangeHeaderAsNeeded()
+        {
+            // Whenever a checkbox in the GridView is toggled, we need to
+            // check the Header checkbox if ALL of the GridView checkboxes are
+            // checked, and uncheck it otherwise
+            if (CheckBoxIDs != null)
+            {
+                // check to see if all other checkboxes are checked
+                for (var i = 1; i < CheckBoxIDs.length; i++)
+                {
+                    var cb = document.getElementById(CheckBoxIDs[i]);
+                    if (!cb.checked)
+                    {
+                        // Whoops, there is an unchecked checkbox, make sure
+                        // that the header checkbox is unchecked
+                        ChangeCheckBoxState(CheckBoxIDs[0], false);
+                        return;
+                    }
+                }
+                
+                // If we reach here, ALL GridView checkboxes are checked
+                ChangeCheckBoxState(CheckBoxIDs[0], true);
+            }
+        }
+
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+<!--
+
+function Button1_onclick() {
+var mt=document.getElementById("ctl00_ContentPlaceHolder1_dgDailyProgress_ctl02_ChildTemplate_PK_grdCurrent_ctl03_ChildTemplate_PK1_grdAssigned_ctl02_AssChkMT").checked;
+var qc=document.getElementById("ctl00_ContentPlaceHolder1_dgDailyProgress_ctl02_ChildTemplate_PK_grdCurrent_ctl03_ChildTemplate_PK1_grdAssigned_ctl02_AssChkQC").checked;
+var pr=document.getElementById("ctl00_ContentPlaceHolder1_dgDailyProgress_ctl02_ChildTemplate_PK_grdCurrent_ctl03_ChildTemplate_PK1_grdAssigned_ctl02_AssChkPR").checked;
+var fr=document.getElementById("ctl00_ContentPlaceHolder1_dgDailyProgress_ctl02_ChildTemplate_PK_grdCurrent_ctl03_ChildTemplate_PK1_grdAssigned_ctl02_AssChkFR").checked;
+
+var  cmdMT=document.getElementById("ctl00_ContentPlaceHolder1_cmbMT").value;
+var  cmdQC=document.getElementById("ctl00_ContentPlaceHolder1_cmbQC").value;
+var  cmdPR=document.getElementById("ctl00_ContentPlaceHolder1_cmbPR").value;
+var  cmdFR=document.getElementById("ctl00_ContentPlaceHolder1_cmbFR").value;
+
+alert(mt+ " ---"+ qc+ " ----"+ pr+" --- "+ fr)
+
+    var Value=dictationassignment.AssignRights(mt,qc,pr,fr,cmdMT,cmdQC,cmdPR,cmdFR);
+    alert("Return Value : "+Value);
+
+}
+
+// -->
+    </script>
+
+</head>
+<body class="mainBody">
+    <form id="form1" runat="server">
+        <center>
+        <table cellspacing="0" cellpadding="0" style="background-color:White; width:auto; min-width:81.5%; max-width:81.5%;">
+            <tr>
+                <td style="padding: 5px 0px 5px 0px;"s>
+                   <asp:Label runat="server" ID="lblPageHeading" CssClass="pageHeading"></asp:Label>  <span class="gdate">
+                    <%=DateTime.Now.ToShortTimeString.ToString%>
+                </span></td>
+                <td style="text-align:right">                
+                <span class="gdate">
+                    <%=DateTime.Now.ToLongDateString.ToString%>
+                </span>
+                    </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <%--<br style="line-height: 3px;" />--%>
+                    <!-- Begining table logo + topMenu -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="tdLogo">
+                                <img src="../images/BOadminLogo.jpg" width="190" height="39" /></td>
+                            <td colspan="11">
+                            
+                            <div class="wrap">
+    <div class="menu"> 
+      <ul class="cf">
+        <li><a href="dailyworkload.aspx">Home</a></li>
+        <li><a href="#" class="dropdownShow">Manage</a>
+          <ul class="dropdownWrap">
+            <li>
+              <ul>
+                <li><a href="employeemain.aspx">Employees</a></li>
+                <li><a href="dictatormain.aspx">Dictators</a></li>
+                <li><a href="templatemain.aspx">Templates</a></li>
+                <li><a href="companymain.aspx">Companies</a></li>
+                  <li><a href="changepassword.aspx">Change Password</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#" class="dropdownShow">Options</a>
+          <ul class="dropdownWrap">
+            <li>
+              <ul>
+                <li><a href="dictatorassignment.aspx">Assign Team to Dictator</a></li>
+                <%--<li><a href="dictationassignmentsimple.aspx">Assign Team to Dictations - Simple</a></li>--%>
+                <li><a href="dictationassignmentsimplenew2.aspx">Assign Dictations</a></li>
+                  <%--<li><a href="dictationassignmentsimple2.aspx">Assign Bulk Dictation</a></li>--%>
+                <%--<li><a href="dictationassignment.aspx">Assign Team to Dictations - Standard</a></li>--%>
+                <li><a href="dictationtools.aspx">Dictation Tools</a></li>
+                <li><a href="transcriptiontools.aspx">Transcription Tools</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#" class="dropdownShow">Reports</a>
+          <ul class="dropdownWrap">
+            <li>
+              <ul>
+                <li><a href="progressreport.aspx">Progress Report</a></li>
+                <li><h2>Workload</h2></li>
+                <li><a href="dictatorsworkload.aspx"> - Dictator</a></li>
+                <li><a href="employeesworkload2.aspx"> - Employee</a></li>
+                <li><a href="employeesworkloadFull.aspx"> - Employee Detail</a></li>
+                <li><h2>Work History</h2></li>
+                <li><a href="dictatorworkhistory.aspx"> - Dictator</a></li>
+                <li><a href="employeeworkhistory.aspx"> - Employee</a></li>
+                <li><h2>Line Count</h2></li>
+                <li><a href="dictatorslinecount.aspx"> - Dictator</a></li>
+                <li><a href="employeeslinecount.aspx"> - Employee</a></li>
+                <li><a href="datelinecount.aspx"> - Date</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="logout.aspx">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- END of table logo + topMenu -->
+                </td>
+            </tr>
+            <!-- Menu body -->
+            <%-- 
+  <tr>
+    <td class="gridunderline" ><img src="../images/spacer.gif" width="1" height="1" /></td>
+  </tr>--%>
+            <!-- InstanceBeginEditable name="body" -->
+            <!-- InstanceEndEditable -->
+            <tr>
+                <td colspan="2" style="text-align:center; padding-top:2px;">                    
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <%--<tr>
+                            <td colspan="2" style ="background-image:url(../images/BOadminHeadingBG.jpg); width:1150px; height:77px;">
+                                <table width="100%" align="right" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <asp:Label runat="server" ID="lblPageHeading" CssClass="pageHeading"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>--%>
+                        <tr>
+                            <td style="padding:10px;">
+                                <%-- <asp:Label runat="server" ID="lblPageHeading" CssClass="pageHeading"></asp:Label> --%>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="footerFOBackground">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="footerSpace">
+                    <img src="../images/spacer.gif" height="1" alt="" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="footerBlackBackground" style="width:100%">
+                    <a class="footerLink" href="#">Terms and Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        class="footerLink" href="termsandconditions.aspx">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                            class="footerLink" href="#">Feedback</a><br />
+                    <font class="copyright">Copyright &copy; 1995-2006 Accesstek. All Rights Reserved.</font></td>
+            </tr>
+        </table>
+        </center>
+    </form>
+</body>
+</html>

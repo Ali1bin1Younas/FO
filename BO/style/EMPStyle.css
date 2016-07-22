@@ -1,0 +1,257 @@
+/* CSS Document */
+
+.loginmainBody{
+		margin-top:0px; text-align:center; background-color:#c0c0c0; vertical-align:middle;
+}
+
+
+.loginback01{
+		background-image:url(../images/EMP-Login01.gif); width:345; height:338;
+}
+
+.loginback02{
+		background-image:url(../images/EMP-Login02.jpg); width:424; height:338;
+}
+.gdate{
+        font-family:verdana; font-size:10px; font-weight:bold; color:#8189A5; text-align:right;  margin-top:0px; 
+}
+
+.loginpasswordText{
+		font-family:verdana; font-size:10px; font-weight:bold; letter-spacing:1px; color:#e1e1e1; text-align:right; vertical-align:middle;
+}
+
+.txtfieldStyle{
+		border-bottom:#1e1e1e 1px solid; border-left:#1e1e1e 1px solid; border-right:#1e1e1e 1px solid; border-top:#1e1e1e 1px solid; background-color:#fofofo;
+}
+
+a.forgotpasswordLink{
+		font-family:verdana; font-size:10px; font-style:none; color:#e1e1e1; text-align:right; font-weight:bold; text-decoration:underline;
+}
+a.forgotpasswordLink:hover{
+		font-family:verdana; font-size:10px; font-style:italic; color:#e1e1e1; text-align:right; font-weight:bold; text-decoration:none;		
+}
+
+.alinRight{
+		text-align:right;
+}
+.alinLeft{
+		text-align:left;
+}
+
+.mainBody{
+		margin-top:0px; text-align:center; background-color:#c0c0c0; vertical-align:top;
+}
+.whitetable{
+		background-color:#FFFFFF; width:770px; border:0;>
+}
+
+
+.tdLogo{
+		width:216px; text-align:left; vertical-align:bottom;
+}
+
+.tdBanner{
+		width:615px; height:66px; background-image:url(../images/banner.jpg); text-align:left;font-family:arial; font-size:14px; font-weight:none; color:#ffffff; letter-spacing:2px;
+}
+.WhiteBg{
+		background-color:#FFFFFF;
+}
+
+.clientIDRedBg{
+		background-color:#c8150d; width:155px;
+}
+
+.clientIDBlackBg{
+         background:#1e1e1e; font-family:verdana; font-weight:bold; font-size:40px; color:#ffffff; align:center;
+}
+
+.IDTblBg-Margn{
+          background-color:#c8150d; margin-top:3px; margin-right:3px; margin-left:3px; margin-bottom:3px;
+}
+.welcom{
+		font-family:arial; font-size:16px; font-weight:none; color:#ffffff; text-align:left; margin-left:10px; letter-spacing:2px;
+		
+}
+.empName{
+		font-family:arial ; font-size:16px; font-weight:bold; color:#ffffff; text-align:left; letter-spacing:2px; padding-left:50px;
+}
+.empTitle{
+		font-family:arial ; font-size:12px; font-weight:bold; color:#1e1e1e; text-align:left; font-style:italic; letter-spacing:2px; padding-left:50px;
+}
+
+.headingLrg{
+		font-family:verdana; font-size:17px; color:#2a2a2a; text-align:left; padding-left:50px; text-indent:0px; vertical-align:middle;
+}
+.heading{
+		height:35px; width:220; font-family:verdana; font-weight:bold; font-size:16px; color:#1e1e1e; text-align:left; text-indent:0px; vertical-align:middle;
+}
+.upload{
+		height:35px; font-family:verdana; font-weight:bold; font-size:20px; color:#1e1e1e; text-align:right; text-indent:0px;  	vertical-align:middle;
+}
+.uploadleft{
+		height:35px; font-family:verdana; font-weight:bold; font-size:20px; color:#1e1e1e; text-align:left; text-indent:0px;  	vertical-align:middle;
+}
+
+.tdPageLinkText{
+		font-family:verdana; height:20px; font-size:11px; color:#8189A5; font-weight:none; text-decoration:none; text-align:right;
+}
+a.pageLink{
+		font-family:verdana; font-size:11px; color:#8189A5; font-weight:none; text-decoration:none;
+}
+a.pageLink:hover{
+		font-family:verdana; font-size:11px; color:#8189A5; font-weight:none; text-decoration:none;
+}
+
+.gridunderline{
+		background-color:#bbbbbb; height:2px;
+}
+
+
+.footerFOBackground{
+		background-color:#8189A5; height:6px;
+		/*background-color:#AFB6CF; height:6px;*/ 
+}
+.footerSpace{
+		background-color:#ffffff; height:2px; 
+}
+.footerBlackBackground{
+		background-color:#1e1e1e; text-align:center; height:66px; font-family:verdana; font-size:12px; color:#ffffff; line-height:20px; 
+}
+a.footerLink{
+		font-family:verdana; font-size:11px; color:#FFFFFF; font-weight:none; text-decoration:none;
+}
+a.footerLink:hover{
+		font-family:verdana; font-size:11px; color:#FFFFFF; font-weight:none; text-decoration:underline;
+}
+
+.copyright{
+		font-family:arial; font-size:11px; color:#FFFFFF; font-weight:none; text-decoration:none;
+}
+
+
+/*  border Styles   */
+
+.menubdr{
+      border-top:#ffffff 1px solid; font-family :Arial; font-size :11px; height :16px; vertical-align :bottom;
+	  }	
+.fieldbdr{
+      border-right:#A09F9F 1px solid; border-left:#A09F9F 1px solid; border-top:#A09F9F 1px solid; border-bottom:#A09F9F 1px solid;
+	  }
+/*-------------------------*/
+
+/*fo CSS*/
+
+
+
+.divide{
+		 width:10px;height:30px; 
+		 }
+.profileleft{
+		 font-family:verdana; font-size:10px; color:#000000; font-weight:none; text-align:right; height:30px;width:380px;
+		 }
+.profileright{
+		 font-family:verdana; font-size:10px; color:#000000; font-weight:none; text-align:left; height:30px;width:380px;
+		 }
+.profile{
+		 font-family:verdana; font-size:12px; color:#000000; font-weight:none; text-align:right; height:30px
+		 }
+		 
+
+.profilelbl{
+		 font-family:verdana; font-size:12px; color:#000000; font-weight:bold; text-align:right; height:30px
+		 }		 
+		 .profile1{
+		 font-family:verdana; font-size:10px; color:#000000; font-weight:none; text-align:left; height:30px; 
+		 }
+		 .gridview{
+          font-family:verdana; font-size:9px;
+}
+
+.dvcolumn{
+		 font-family:verdana; font-size:10px; color:#000000; font-weight:none; height:30px;width:380px;
+		 }
+.dvgrid{
+		 height:30px;width:225px;
+		 }
+
+.btnCenter{
+		 text-align:center ;
+		 }
+.transcriptionFileBld
+		{
+			font-size: 9px; width: 150px; font-family: arial; text-align:right;
+		}
+.blackSubtext{
+		font-family:arial; font-size:13px; text-align:left; color:#343434; letter-spacing:0.9px; font-style:strong;
+}
+
+/*-- Basic Line Styles-*/
+
+.tdspace{
+		 background:#dedede; height:2px; width:770;
+}		
+	
+	/*** fo Copy ***/
+		
+.divideSmall{
+		 width:10px;height:22px; 
+		 }
+.profileleftSmall{
+		 font-family:verdana; font-size:10px; vertical-align:middle; color:#000000; font-weight:none; text-align:left; height:24px;width:280px;
+		 }
+.profilerightSmall{
+		 font-family:verdana; font-size:10px; vertical-align:middle; color:#000000; font-weight:none; text-align:right; height:24px;width:70px;
+		 }	
+		 
+.profileleftPwd{
+		 font-family:verdana; font-size:10px; vertical-align:middle; color:#000000; font-weight:none; text-align:left; height:24px;width:290px;
+		 }
+.profilerightPwd{
+		 font-family:verdana; font-size:10px; vertical-align:middle; color:#000000; font-weight:none; text-align:right; height:24px;width:160px;
+		 }
+		 
+.boProfileleft{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000; font-weight:none; text-align:left; height:25px;width:360px;
+		 }
+.boProfileright{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000; font-weight:none; text-align:right; height:25px;width:130px;
+}
+		
+		
+/* Grid Common Style  */
+
+.tdspacingLeft
+{
+	 padding-left:5px;
+}	
+.tdspacingRight
+{
+	 padding-right:5px;
+}
+
+/* Grid heading Style */
+	
+.gridHeadingCenter
+{
+	 text-align:center; vertical-align:middle; font-family:Verdana; font-size:10px; font-weight:bold; 
+}			
+.gridHeadingLeft
+{
+	 text-align:left; vertical-align:middle; font-family:Verdana; font-size:10px; font-weight:bold; padding-left:5px;  
+}
+
+/* Grid icon display styles */
+	
+.grid4Ico
+		{
+		 width:90px; text-align:center; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px; 
+		 }
+.grid3Ico
+		{
+		 width:68px; text-align:center; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px;
+		 }		 
+.grid2Ico
+		{
+		 width:45px; text-align:left; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px; 
+		 }
+/*--------------------------------------------------------*/

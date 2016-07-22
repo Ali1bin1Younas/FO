@@ -1,0 +1,130 @@
+Imports System.Data
+Imports System.Data.SqlClient
+Imports MTBMS.BLL
+Imports MTBMS.DAL
+
+Partial Class BO_employeeslinecount
+    Inherits System.Web.UI.Page
+
+    Dim eempID As String
+    Dim Query As String
+
+    Protected intTMinutes As Integer
+    Protected intTDictations As Integer
+    Protected intTTranscriptions As Integer
+
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Session("empId") = "" Then Response.Redirect(GF.Home)
+        'lblCompleteName.Text = Session("CompletePrefix") + "  " + Session("CompleteFirstNAme") + "   " + Session("CompleteLastName")
+        'eempID = Session("empID")
+        Session("cint") = 0
+        If Not Me.IsPostBack Then
+            Me.cpFrom.SelectedDate = Now.Date
+            Me.cpFrom.VisibleDate = Now.Date
+
+            Me.cpTo.SelectedDate = Now.Date
+            Me.cpTo.VisibleDate = Now.Date
+            load_dropdownlist_Emp()
+            loadRole()
+        End If
+    End Sub
+
+    Protected Sub load_dropdownlist_Emp()
+        Query = "SELECT empID, empID + '-' + empFirstName + ' ' +  empLastName AS EmployeeName FROM boEmployee " _
+                & "WHERE empId <> '0' and empEnable = 1"
+        Dim con As New DBTaskBO
+        Dim ds As New DataSet
+        ds = con.getDataSet(Query)
+        Me.ddlEmployee.DataSource = ds
+        Me.ddlEmployee.DataBind()
+        ds.Dispose()
+    End Sub
+
+    Protected Sub loadRole()
+        Query = "SELECT rolDescription , rolID from boRoles " _
+                & "where rolID <> 'AD' AND rolEnable = 1 " _
+                & "GROUP By rolDescription ,rolID, rolOrder " _
+                & "Order by rolOrder"
+        Dim con As New DBTaskBO
+        Dim ds As New DataSet
+        ds = con.getDataSet(Query)
+        Dim dt As DataTable
+        dt = ds.Tables(0)
+        Dim i As Integer
+
+        For Each item1 As DataRow In dt.Rows
+            dt.Rows(i).Item(0) = item1.Item(1) & " - " & item1.Item(0)
+            i = i + 1
+        Next
+
+        Me.ddlEmployeeRole.DataSource = dt
+        Me.ddlEmployeeRole.DataBind()
+
+        ds.Dispose()
+        con.objConnection.Close()
+        con = Nothing
+    End Sub
+
+    Protected Function getCounter() As String
+        Dim intCount As Integer = Session("cint")
+        intCount += 1
+        Session("cint") = intCount
+        Return intCount.ToString
+    End Function
+
+    Protected Function getmin(ByVal second As String) As String
+        Return GF.GetMin(second)
+    End Function
+
+    Protected Sub getTotals(ByVal dt As DataTable)
+
+        intTMinutes = 0
+        intTDictations = 0
+        intTTranscriptions = 0
+        For Each item1 As DataRow In dt.Rows
+            intTMinutes += CType(item1(3), Integer)
+            intTDictations += CType(item1(2), Integer)
+            intTTranscriptions += CType(item1(4), Integer)
+        Next
+    End Sub
+
+    Protected Sub btnSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSubmit.Click
+        Dim con As New DBTaskBO
+        If Me.ddlInfo.SelectedValue = "DD" Then
+            Query = "SELECT convert(char(12),dic.dicDate,3) as dicDate,count(distinct(foID+drID)) AS Dictators," _
+                    & "COUNT(dic.dicID) AS Dictations, SUM(dic.dicLength) AS Minutes," _
+                    & "SUM(dic.dicTranscriptions) AS Transcriptions " _
+                    & "FROM boDictation dic INNER JOIN " _
+                    & "boDictationLayers dicL ON dic.dicID = dicL.dicID " _
+                    & "WHERE (dicL.empID = '" & Me.ddlEmployee.SelectedValue & "') AND (dicL.rolID = '" & Me.ddlEmployeeRole.SelectedValue & "') AND (dicL.diclStatus = 3) AND " _
+                    & "(dic.dicDate BETWEEN '" & Me.cpFrom.SelectedDate & "' AND '" & Me.cpTo.SelectedDate & "')" _
+                    & "GROUP BY dic.dicDate " _
+                    & "ORDER BY dic.dicDate"
+        ElseIf Me.ddlInfo.SelectedValue = "TD" Then
+            Query = "SELECT  Convert(char(12),dicL.diclEnd,3) as dicDate,count(distinct(foID+drID)) AS Dictators," _
+                     & "COUNT(dic.dicID) AS Dictations, SUM(dic.dicLength) AS Minutes," _
+                     & "SUM(dic.dicTranscriptions) AS Transcriptions " _
+                     & "FROM boDictation dic INNER JOIN " _
+                     & "boDictationLayers dicL ON dic.dicID = dicL.dicID " _
+                     & "WHERE (dicL.empID = '" & Me.ddlEmployee.SelectedValue & "') AND (dicL.rolID = '" & Me.ddlEmployeeRole.SelectedValue & "') AND (dicL.diclStatus = 3) AND " _
+                     & "(dicL.diclEnd BETWEEN '" & Me.cpFrom.SelectedDate & "' AND '" & Me.cpTo.SelectedDate & "') " _
+                     & "GROUP BY dicL.diclEnd " _
+                     & "ORDER BY dicL.diclEnd"
+        End If
+
+        Dim ds As New DataSet
+        ds = con.getDataSet(Query)
+        If ds.Tables(0).Rows.Count <> 0 Then
+            getTotals(ds.Tables(0))
+        End If
+        Me.GridView1.DataSource = ds
+        Me.GridView1.DataBind()
+
+        ds.Dispose()
+        con.objConnection.Close()
+        con = Nothing
+        'Me.lblCompleteName.Text = Me.ddlEmployee.SelectedItem.ToString
+    End Sub
+
+End Class

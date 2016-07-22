@@ -1,0 +1,298 @@
+<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="BO_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server" >
+
+    <title>Medical Transcriptions</title>
+    
+<link rel="stylesheet" href="../style/EMPStyle.css" type="text/css" />
+<link rel="stylesheet" href="../style/BOStyle.css" type="text/css" />
+<link rel="stylesheet" href="../style/menu.css" type="text/css" />
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript">
+	    $(document).ready(function() {
+	        /* for keeping track of what's "open" */
+	        var activeClass = 'dropdown-active';
+
+	        /* recurse through dropdown menus */
+	        $('.menu').each(function() {
+	            /* track elements: menu, parent */
+	            var activeClass = "dropdown-active";
+	            var $menu = $(this);
+
+	            var dropdowns = $('.dropdownShow', $menu);
+	            var allWraps = $('.dropdownWrap', $menu);
+
+	            /* hide all menus, scoped */
+	            function hideAll() {
+	                dropdowns.removeClass(activeClass);
+	                allWraps.hide();
+	            }
+
+	            dropdowns.each(function() {
+	                var dropdown = $(this);
+	                var parent = dropdown.parent();
+	                var wraps = $('.dropdownWrap', parent);
+
+	                /* function to show menu when clicked */
+	                dropdown.click(function(e) {
+	                    if (dropdown.hasClass(activeClass)) {
+	                        dropdown.removeClass(activeClass);
+	                        wraps.hide();
+	                    }
+	                    else {
+	                        hideAll();
+	                        dropdown.addClass(activeClass);
+	                        wraps.show();
+	                    }
+
+	                    e.stopPropagation();
+	                });
+	            });
+
+	            $(document).click(hideAll);
+	        });
+	    });
+
+	</script>
+
+<script language="javascript" type="text/javascript">
+   
+    function confirmDel(){
+      if(confirm("Are you sure you want to delete?")==true)
+        return true;
+       else
+        return false;
+      //window.location.reload(false);  
+     
+    }
+    
+    function confirmdelete(){
+    
+    if(confirm("Are you sure you want to delete?")==true)
+       {
+        checkbox.checked=true
+        return true;
+       }
+       else
+        return false;
+    
+    }
+  
+    function confirmdictation(session,count){
+//    var file;
+//   file=BO_transcription.path_openclick();
+//    alert(session);
+//    alert(count.value)
+////    
+//    if (session==count.value)
+//    {
+//    
+//    return true;
+//    }
+//    alert("You have not uploaded all the transcptions ")
+//    return false;
+    }
+    
+    function submit_tag(checkbox,textbox) 
+    {
+    if(checkbox.checked==true && textbox.value=="")
+     {
+        alert("Please enter some Remarks ")
+         return false;
+      }
+      }
+    
+     function changetag(checkbox,dropbox){
+    
+      if (dropbox.value=="NO ")
+            {
+                checkbox.checked=true;
+                checkbox.disabled=true;
+                }
+        else
+            {
+               checkbox.disabled=false;
+            }   
+  
+         
+    
+    }
+    
+    function confirmEnableDisable(checkbox,textbox){
+    
+        //alert(checkbox.checked);
+        //alert(textbox.value);
+        
+        
+        if (checkbox.checked==false && textbox.value!="")
+        {
+        //alert(textbox.value);
+      
+      
+            if(confirm("Are you sure you do not want to tag this file?")==true)
+               {
+                checkbox.checked=true;
+                return true;
+                }
+            else
+                {
+                return true;
+                }
+        } 
+
+        if(checkbox.checked==true && textbox.value=="")
+        {
+        alert("Please enter some Remarks ")
+        
+         return false;
+        
+        }
+
+
+    }
+    
+function  createwordfile(path)
+{
+   // window.open("transcriptionfile.aspx") 
+ 
+
+//file=aspnetForm.path_openclick()
+//file=BO_MasterPage.BO_transcription.path_openclick();
+
+
+}
+
+   
+</script>
+<script language="VBScript" type="text/vbscript">
+
+
+'function confirmEnableDisable(checkbox,textbox)
+'    
+'        //alert(checkbox.checked);
+'        //alert(textbox.value);
+'        
+'        
+'        if (checkbox.checked==false && textbox.value!="")
+'        {
+'        //alert(textbox.value);
+'      
+'      
+'            if(confirm("Are you sure you do not want to tag this file?")==true)
+'               
+'                checkbox.checked=true
+'                return true
+'                
+'            else
+'                
+'                return true
+'                end if
+'        end if 
+
+'        if checkbox.checked=true and textbox.value="" then
+'       
+'        msgbox("Please enter some Remarks ",vbOK)
+'        
+'         return false
+'        
+'        end if
+
+
+'    end function 
+
+
+</script>
+
+</head>
+<body style="margin-left:0px; margin-right:0px; margin-top:0px" class="mainBody">
+<center>
+    <form id="form1" runat="server">
+        <table cellpadding="0" cellspacing="0" class="whitetable" width="770">
+            
+            <tr>
+                <td>
+                    <br style="line-height: 2px" />
+                    <!-- Begining table logo + topMenu -->
+                    <table cellspacing="0" cellpadding="0" style="background-color:White; width:auto; min-width:1024px; max-width:1150px;">
+            <tr>
+                <td class="gdate">
+                    <%=DateTime.Now.ToLongDateString.ToString%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <%--<br style="line-height: 3px;" />--%>
+                    <!-- Begining table logo + topMenu -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="tdLogo">
+                                <img src="../images/BOadminLogo.jpg" width="190" height="39" /></td>
+                            <td colspan="11">
+                            
+                            <div class="wrap">
+    <div class="menu"> 
+      <ul class="cf">
+      
+        <li>
+            <a href="employeeworkload.aspx">Home</a>
+        </li>
+        <li>
+            <a href="workhistory.aspx">History</a>
+        </li>
+        
+        <li>
+            <a href="search.aspx">Search</a>
+        </li>
+        <li>
+            <a href="employeeupdate.aspx">Profile</a>
+        </li>
+        <li>
+            <a href="emppassword.aspx">Password</a>
+        </li>
+        <li>
+            <a href="logout.aspx">Logout</a>
+        </li>
+        
+    </ul>
+</div>
+</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- END of table logo + topMenu -->
+                </td>
+            </tr>
+            <!-- Menu body -->
+            
+            <!-- InstanceBeginEditable name="body" -->
+            <!-- InstanceEndEditable -->
+            <tr class="tdwhite">
+                <td><br style ="line-height:3px;">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <span style="font-size: 8pt"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="footerFOBackground">
+                </td>
+            </tr>
+            <tr style="font-size: 8pt">
+                <td class="footerSpace">
+                    <img alt="" height="1" src="../images/spacer.gif" /></td>
+            </tr>
+            <tr style="font-size: 8pt">
+                <td class="footerBlackBackground" style="width: 980px">
+                    <a class="footerLink" href="underconstruction.aspx"><span style="font-family: Arial">
+                        Terms and Conditions</span></a> &nbsp;| &nbsp;<a class="footerLink" href="underconstruction.aspx">Privacy
+                            Policy</a> &nbsp;| &nbsp;<a class="footerLink" href="underconstruction.aspx">Feedback</a><br />
+                    <font class="copyright">Copyright © 1995-2006 Accesstek. All Rights Reserved.</font></td>
+            </tr>
+        </table>
+    </form>
+    </center>
+</body>
+</html>
