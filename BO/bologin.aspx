@@ -27,7 +27,7 @@
             <td class="tdalignRight"><img src="images/BOtopBar.jpg" width="614" height="37" /></td>
           </tr>
         </table>
-        <!---  END of LOGO+MENU TABLE ----></td>
+        <!---  END of LOGO + MENU TABLE ----></td>
     </tr>
     <tr>
       <td style="padding:30px; text-align:left;"><img src="images/BOloginpageHeading.jpg" width="195" height="24" /></td>
@@ -136,7 +136,7 @@
     </tr>
     <tr>
       <td class="footerBackground" valign="top"><br style="line-height:5px;"/>
-        <font class="copyright">Copyright &copy; 1995-2006 accesstek. All Rights Reserved.</font></td>
+        <font class="copyright">Copyright &copy; 1995-2016 accesstek. All Rights Reserved.</font></td>
     </tr>
   </table>
 </form>
