@@ -1,0 +1,340 @@
+/* CSS Document */
+
+/*-- Login Page Style --*/
+
+
+.loginmainBody{
+		margin-top:0px; text-align:center; background-color:#c0c0c0; vertical-align:middle;
+}
+
+
+.loginback01{
+		background-image:url('../images/FO-Login01.jpg'); width:345; height:338
+}
+
+.loginback02{
+		background-image:url('../images/FO-Login02.jpg'); width:424; height:338
+}
+
+.loginpasswordText{
+		font-family:verdana; font-size:10px; font-weight:bold; letter-spacing:1px; color:#6A7D8F; text-align:right; vertical-align:middle;
+}
+
+.txtfieldStyle{
+		border-bottom:#6A7D8F 1px solid; border-left:#6A7D8F 1px solid; border-right:#6A7D8F 1px solid; border-top:#6A7D8F 1px solid; background-color:#f0f0f0;
+}
+               /*---- Login Link Styles ----*/
+       
+a.forgotpasswordLink{
+		font-family:verdana; font-size:10px; color:#6A7D8F; text-align:right; text-decoration:underline;
+}
+a.forgotpasswordLink:hover{
+		font-family:verdana; font-size:10px; font-style:italic; color:#6A7D8F; text-align:right; text-decoration:none;		
+}
+
+            /*---- Login Page Date Display Style------*/
+
+.logindate{
+        font-family:verdana; font-size:10px; font-weight:bold; color:#6A7D8F; text-align:right;  margin-top:0px; 
+}
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/*-- Inner Pages Style --*/
+
+/*- Main Styles -*/
+.mainBody{
+		margin:0px; text-align:center; background-color:#c0c0c0; vertical-align:top;
+}
+
+
+/*- Background Styles-*/
+.WhiteBg{
+		background-color:#FFFFFF;
+}
+.whitetable{
+		background-color:#FFFFFF; width:770px; border:0px none;
+}
+
+
+/*-- Basic Alignment Styles-*/
+
+.alinRight{
+		text-align:right;
+}
+.alinLeft{
+		text-align:left;
+}
+
+
+/*-- Logo Display Styles-*/
+.tdLogo{
+		width:192px; text-align:left; vertical-align:bottom;
+}
+
+
+/*-- Basic Line Styles-*/
+
+.tdspace{
+		 background:#dedede; height:2px; width:770;
+}
+
+/*--  Pages Heading Style --*/
+
+
+/*--  Pages Heading Style --*/
+
+/*--- Text Styles---*/
+/*Date Display*/
+.gdate{
+        font-family:verdana; font-size:12px; font-weight:bold; color:#397BD9; text-align:right;  padding:10px; 
+}
+/*Date Display*/
+
+.clientName{
+		font-family:arial ; font-size:16px; font-weight:bold; color:#ffffff; margin-left:10px; text-align:left; margin-bottom:5px; letter-spacing:2px;
+}
+/*Page Heading*/
+.pageHeading{
+		font-family:verdana; font-size:16px; font-weight:bold; color:black; text-align:left; padding-left:36px; vertical-align:middle;
+}
+
+.regularText{
+		height:28; font-family:verdana; font-size:12px; font-weight:bold; color:#2a2a2a; vertical-align:middle;
+}
+
+.heading{
+		height:35px; width:220; font-family:arial; font-weight:bold; font-size:15px; color:#1e1e1e; text-align:left; text-indent:0px; vertical-align:middle;
+}
+.tdPageLinkText{
+		font-family:verdana; height:25px; background-color:Transparent; vertical-align:bottom; font-size:11px; color:#947427;  text-decoration:none; text-align:right;
+}
+
+.searchTools{
+		height:35px; 
+		width:100%; 
+		font-family:verdana; 
+		font-weight:bold; 
+		font-size:11px; 
+		color:#1e1e1e; 
+		text-align:right; 
+		vertical-align:middle;
+}
+	
+.pageLink{
+		font-family:verdana; font-size:12px; font-weight:bold; color:#397BD9; text-align:right;  padding-bottom:10px; 
+}
+
+.gridunderline{
+		background-color:#bbbbbb; height:2px;
+}
+
+/*------------------------------------------------------------------------*/
+/*--Footer Styles---*/
+
+.footerFOBackground{
+		background-color:#699BE4; height:6px; 
+}
+.footerSpace{
+		background-color:#ffffff; height:2px; 
+}
+.footerBlackBackground{
+		background-color:#1e1e1e; text-align:center; height:66px; font-family:verdana; font-size:12px; color:#ffffff; line-height:20px; 
+}
+.copyright{
+		font-family:arial; font-size:11px; color:#FFFFFF;  text-decoration:none;
+}
+
+/*--FooterLink--*/
+a.footerLink{
+		font-family:verdana; font-size:11px; color:#FFFFFF;  text-decoration:none;
+}
+a.footerLink:hover{
+		font-family:verdana; font-size:11px; color:#FFFFFF;  text-decoration:underline;
+}
+/*------------------------------------------------------------------------*/
+
+
+
+
+
+/*fo CSS*/
+
+/*  border Styles   */
+
+.menubdr{
+      border-top:#ffffff 1px solid; font-family :Arial; font-size :11px; height :16px; vertical-align :bottom;
+	  }	
+.fieldbdr{
+      border-right:#A09F9F 1px solid; border-left:#A09F9F 1px solid; border-top:#A09F9F 1px solid; border-bottom:#A09F9F 1px solid;
+	  }
+/*-------------------------*/	  
+	  
+.divide{
+		 width:10px;height:25px; 
+		 }
+.profileleft{
+		 font-family:verdana; font-size:10px; color:#000000;  text-align:left; height:25px;width:380px;
+		 }
+.profileright{
+		 font-family:verdana; font-size:10px; color:#000000;  text-align:right; height:25px;width:380px;
+		 }
+.profile{
+		 font-family:verdana; font-size:12px; color:#000000;  text-align:right; height:30px
+		 }
+
+.profilelbl{
+		 font-family:verdana; font-size:12px; color:#000000; font-weight:bold; text-align:right; height:30px
+		 }		 
+.profile1{
+		 font-family:verdana; font-size:10px; color:#000000;  text-align:left; height:30px; 
+		 }
+.gridview{
+          font-family:verdana; font-size:9px;
+		}
+
+.dvcolumn{
+		 font-family:verdana; font-size:10px; color:#1e1e1e; height:20px;  width:500px;
+		 }
+.dvgrid{
+		 height:30px;width:225px;
+		 }
+
+.btnCenter{
+		 text-align:center ;
+		 }
+		 
+		 
+.boProfileleft{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000;  text-align:left; height:25px;width:360px;
+		 }
+.boProfileright{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000;  text-align:right; height:25px;width:130px;
+}
+.boProfileleftLrg{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000;  text-align:left; height:25px;width:360px;
+		 }
+.boProfilerightLrg{
+		 font-family:verdana; vertical-align:middle; font-size:11px; color:#000000;  text-align:right; height:25px;width:160px;
+}
+.blackSubtext{
+		font-family:arial; font-size:13px; text-align:left; color:#343434; letter-spacing:0.9px; font-weight:bold;
+}
+.boProfileleftMedium{
+		 font-family:verdana; vertical-align:top; font-size:11px; color:#000000;  text-align:left; height:25px;width:320px;
+		 }
+
+/* location CSS */
+
+.locationLabel{
+				height:20px; width:90px; font-family:arial; font-weight:bold; font-size:12px; color:#1e1e1e; text-align:left; vertical-align:middle;	
+			}	
+.locationText
+			{
+				border:#A09F9F 1px solid; height:18px; width:230; font-family:arial;  font-size:12px; color:#1e1e1e; text-align:left; text-indent:10px; vertical-align:middle;	
+			}	
+			
+			
+			
+			
+/* grid styles*/
+/*.gridSerialNo
+{
+	 width:30px; text-align:left;  font-family:Verdana; font-size:10px; 
+}*/
+
+
+/* Grid Main heading Style */
+.gHeading{
+		height:25px; font-family:arial; font-weight:bold; font-size:14px; color:#1e1e1e; text-align:left; text-indent:0px; vertical-align:middle; padding-left:7px;
+}
+
+/* Grid heading Style */
+	
+.gridHeadingCenter
+{
+	 text-align:center; vertical-align:middle; font-family:Verdana; font-size:10px; font-weight:bold; 
+}			
+.gridHeadingLeft
+{
+	 text-align:left; vertical-align:middle; font-family:Verdana; font-size:10px; font-weight:bold; padding-left:5px;  
+}
+
+
+/*--------------------------------------------------------*/
+
+/* Grid icon display styles */
+	
+.grid4Ico
+		{
+		 width:150px; text-align:center; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px; 
+		 }
+.grid3Ico
+		{
+		 width:68px; text-align:center; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px;
+		 }		 
+.grid2Ico
+		{
+		 width:45px; text-align:center; vertical-align:middle; letter-spacing:4px; padding-right:4px; padding-left:4px; 
+		 }
+/*--------------------------------------------------------*/
+
+	 
+/* Grid's Link Style  */
+
+a.blackLink{
+		font-family:verdana; font-size:11px; color:black;
+}
+a.blackLink:hover{
+		font-family:verdana; font-size:11px; color:black;
+}
+/*--------------------------------------------------------*/
+
+/* Grid Common Style  */
+
+.tdspacingLeft
+{
+	 padding-left:5px;
+}	
+.gridSerialNo
+{
+	 width:35px; text-align:center; vertical-align:middle; padding-left:0px; font-family:Verdana; font-size:10px; 
+}
+	
+.gridIDdigit
+{
+	 width:45px; text-align:center; font-family:Verdana; font-size:10px;  
+}		
+
+td
+{
+	color:Black;
+	}
+	
+table
+{
+	font-family:Verdana;
+	font-size:11px;
+	}
+	
+.select-style
+{
+     background: transparent;
+     background-color:#BAD6FF;
+   padding: 1px;
+   font-size: 12px;
+   line-height: 2;
+   border: 1px solid #ccc;
+   border-radius: 0;
+   height: 22px;
+   -webkit-appearance: none;
+    }
+/* -------------------------------------------------------------- */
+
+		 
+
+
+
+
+
+		 

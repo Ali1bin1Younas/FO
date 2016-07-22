@@ -1,0 +1,70 @@
+/* CSS Document */
+
+
+.ATEKbody{
+		text-align:center; margin-top:0;
+}
+
+.loginText{
+		font-family:verdana; font-size:9px; font-weight:bold; text-decoration:none; color:#53585D; text-align:right; height:15px;		
+}
+a.loginLINK{
+		font-family:verdana; font-size:9px; font-weight:bold; text-decoration:none; color:#53585D;
+}
+a.loginLINK:hover{
+		font-family:verdana; font-size:9px; font-weight:none; text-decoration:none; color:#53585D;
+}
+.smalltext{
+		font-family:arial; font-size:11px; text-align:left; color:#595A5A;  
+}
+.regulartext{
+		font-family:arial; font-size:12px; text-align:left; color:#595A5A; line-height:17px;  
+}
+.textwithBullet{
+		font-family:arial; font-size:10px; text-align:left; color:#343434; letter-spacing:0.9px; vertical-align:middle; height:18px
+}
+a.readmoreLINK{
+		font-family:verdana; font-size:9px; font-weight:bold; color:#595A5A; text-align:right; letter-spacing:0.9px;
+}
+a.readmoreLINK:hover{
+		font-family:verdana; font-size:9px; font-weight:bold; color:#595A5A; text-align:right; letter-spacing:0.9px;
+}
+
+.tdalignRight{
+		text-align:right;
+}
+.tdalignLeft{
+		text-align:left;
+}
+.tdCorner{
+          width:11px; height::11px;
+}
+.tdrightLeftBorder{
+		border-left:solid 2px #CAD7DF; border-right:solid 2px #CAD7DF;
+}
+
+
+.tdlightGrayBG{
+		background-color:#E6EBEF; width:150; 
+}
+.tddarkGrayBG{
+		background-color:#CAD7DF; width:150; 
+}
+
+.footerSpace{
+		background-color:#ffffff; height:2px; 
+}
+.footerBackground{
+		background-color:#AEC4D3; text-align:center; height:66px; font-family:verdana; font-size:12px; color:#53585D; line-height:20px; 
+}
+a.footerLink{
+		font-family:verdana; font-size:11px; color:#53585D; font-weight:none; text-decoration:none;
+}
+a.footerLink:hover{
+		font-family:verdana; font-size:11px; color:#53585D; font-weight:bold; text-decoration:none;
+}
+
+.copyright{
+		font-family:arial; font-size:11px; color:#53585D; font-weight:none; text-decoration:none;
+}
+
